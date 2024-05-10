@@ -22,9 +22,12 @@ Write the C Program using Linux Process API - pipe(), fifo()
 Testing the C Program for the desired output. 
 
 # PROGRAM:
+```
+DEVELOPED BY: RIYA P L
+REG NO: 212223240141
 
 ## C Program that illustrate communication between two process using unnamed pipes using Linux API system calls
-~~~
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<sys/types.h> 
@@ -52,18 +55,7 @@ client(p1[1],p2[0]);
 wait(waits); 
 return 0; 
 } 
-void client(int wfd,int rfd) {
-int i,j,n; char fname[2000];
-char buff[2000];
-printf("ENTER THE FILE NAME :");
-scanf("%s",fname);
-printf("CLIENT SENDING THE REQUEST .... PLEASE WAIT\n");
-sleep(10);
-write(wfd,fname,2000);
-n=read(rfd,buff,2000);
-buff[n]='\0';
-printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
-}
+
 void server(int rfd,int wfd) 
 { 
 int i,j,n; 
@@ -79,13 +71,28 @@ else
 n=read(fd,buff,2000); 
 write(wfd,buff,n); 
 }
-~~~
-## OUTPUT
+void client(int wfd,int rfd) {
+int i,j,n; char fname[2000];
+char buff[2000];
+printf("ENTER THE FILE NAME :");
+scanf("%s",fname);
+printf("CLIENT SENDING THE REQUEST .... PLEASE WAIT\n");
+sleep(10);
+write(wfd,fname,2000);
+n=read(rfd,buff,2000);
+buff[n]='\0';
+printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
+}
+```
 
-![322687750-e9242169-e755-465e-8920-f76311cec477](https://github.com/04Varsha/Linux-IPC-Pipes/assets/149035374/06a1ea90-65cb-4c36-abb6-526d317dab29)
+## OUTPUT
+![Screenshot 2024-04-06 085400](https://github.com/Shubhavi17/Linux-IPC-Pipes/assets/150005085/0979707f-b489-4373-8d3b-6f3ee1b1d9a2)
+
+
 
 ## C Program that illustrate communication between two process using named pipes using Linux API system calls
-~~~
+```
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -95,10 +102,9 @@ int res = mkfifo("/tmp/my_fifo", 0777);
 if (res == 0) printf("FIFO created\n");
 exit(EXIT_SUCCESS);
 }
-~~~
+```
 ## OUTPUT
-
-![322687908-9bf64338-0839-4817-96e3-7af7b5be51e7](https://github.com/04Varsha/Linux-IPC-Pipes/assets/149035374/57ac78be-f304-4a74-ba73-73bc1fb7a3a3)
+![Screenshot 2024-04-06 085501](https://github.com/Shubhavi17/Linux-IPC-Pipes/assets/150005085/c9d39292-8800-46a1-a418-a03ca01b9f83)
 
 # RESULT:
 The program is executed successfully.
